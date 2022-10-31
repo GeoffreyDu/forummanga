@@ -1,0 +1,27 @@
+#themePageContainer {
+    min-width: 50%;
+}
+
+#themePageTitle {
+    text-align: center;
+    color: #BC002D;
+    text-transform: uppercase;
+}
+
+#themePageDescription {
+    white-space: pre-line;
+    border: 2px solid #BC002D;
+    border-radius: 5px;
+    min-height: 200px;
+    padding: 10px;
+}
+
+#createCommentForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#createCommentButton {
+    margin-top: 5px;
+    background-color: #BC002D;
+}

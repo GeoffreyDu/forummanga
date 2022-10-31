@@ -1,0 +1,37 @@
+#homeContainer {
+    color: #BC002D;
+}
+
+#homeTitle {
+    text-align: center;
+    color: black;
+}
+
+#containerlistTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#createThemeButton {
+    margin-right: 5px;
+    background-color: #BC002D;
+}
+
+#themePopupCreateTitle, #themePopupUpdateTitle, #themePopupDeleteTitle {
+    text-align: center;
+}
+
+#themePopupCreateButton {
+    color: #BC002D;
+}
+
+#listThemeTitle {
+    margin-left: 5px;
+}
+
+#userThemesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

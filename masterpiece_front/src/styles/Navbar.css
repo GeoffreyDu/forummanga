@@ -1,0 +1,50 @@
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #BC002D;
+}
+
+#navbarMenuSignin{
+    display: flex;
+    justify-content: space-between;
+}
+
+.items, #titleSignin {
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#titleSignin {
+    font-size: 1.1rem;
+    border-radius: 20px;
+    padding: 10px;
+    color: #BC002D;
+    background-color: #fff;
+}
+
+.duo {
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+    #navbar {
+      display: flex;
+      flex-direction: column;
+    }
+    #navbarMenuSignin{
+        display: flex;
+        flex-direction: column;
+    }
+    #titleSignin {
+        width: 100%;
+        background-color: white;
+        color: #BC002D;
+        border-radius: 0;
+    }
+    #homeIcon {
+        display: none;
+    }
+}

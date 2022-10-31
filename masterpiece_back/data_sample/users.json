@@ -1,0 +1,14 @@
+[
+    {
+        "username": "jack",
+        "mail": "jack@mail.fr",
+        "password": "123",
+        "isVerified": true
+    },
+    {
+        "username": "joe",
+        "mail": "joe@mail.fr",
+        "password": "123",
+        "isVerified": true
+    }
+ ]

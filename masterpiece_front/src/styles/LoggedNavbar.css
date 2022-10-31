@@ -1,0 +1,72 @@
+#loggedNavbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #BC002D;
+    padding: 0 0 0 10px;
+}
+
+.itemsLogged, #titleLogged {
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#titleLogged {
+    font-size: 1.1rem;
+    border-radius: 20px;
+    padding: 10px;
+    color: #BC002D;
+    background-color: #fff;
+}
+
+#buttonLogout{
+    margin: 0 15px;
+    padding: 2px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.6rem;
+}
+
+#buttonLogout:hover{
+    color: #BC002D;
+    border: 1px solid #BC002D;
+    background-color: #fff;
+}
+
+#loggedNavbarMenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media only screen and (max-width: 800px) {
+    #loggedNavbar {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+    #loggedNavbarMenu{
+        display: flex;
+        flex-direction: column;
+    }
+    #titleLogged {
+        width: 100%;
+        background-color: white;
+        color: #BC002D;
+        border-radius: 0;
+    }
+    #buttonLogout{
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        margin: 0;
+    }
+    #userHome {
+        margin-top: 8px;
+    }
+    #themeList {
+        margin-bottom: 5px;
+    }
+}

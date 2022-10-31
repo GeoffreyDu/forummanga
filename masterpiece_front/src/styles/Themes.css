@@ -1,0 +1,14 @@
+#themesTitle {
+    text-align: center;
+    color: #BC002D;
+    text-transform: uppercase;
+}
+
+#themesSubTitle {
+    margin-left: 5px;
+}
+
+#spanGoHome {
+    color: #BC002D;
+    cursor: pointer;
+}

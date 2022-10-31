@@ -1,0 +1,45 @@
+.commentContent {
+    white-space: pre-line;
+    padding: 15px;
+}
+
+.commentInfo {
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.updateCommentTitle, .deleteCommentTitle {
+    text-align: center;
+    color: #BC002D;
+    font-family: 'Comic Neue', cursive;
+}
+
+.commentFormButtons {
+    color: #BC002D !important;
+}
+
+.evenCommentColor {
+    background-color: hsla(346, 100%, 37%, 0.253);
+}
+
+.oddCommentColor {
+    background-color: rgba(128, 128, 128, 0.253);
+}
+
+.oddCommentColor, .evenCommentColor {
+    margin-bottom: 30px;
+}
+
+.pDateComment {
+    margin-right: 5px;
+    font-style: italic;
+    font-weight: bold;
+    color: grey;
+    font-size: 0.7rem;
+}
+
+.commentInfoContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,0 +1,32 @@
+#loginForm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #BC002D;
+    border-radius: 20%;
+    padding: 30px;
+}
+
+#titleConnexion {
+    color: #BC002D;
+}
+
+#passwordForgotten {
+    font-size: 0.8rem;
+    color: #BC002D;
+}
+
+@media only screen and (max-width: 800px) {
+    #loginForm {
+        border: none;
+        padding: 0;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    #loginForm {
+        margin-top: 10px;
+        border: none;
+    }
+}
