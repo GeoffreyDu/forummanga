@@ -31,7 +31,7 @@ export const addComment = async(req, res) => {
 export const getAllCommentsByTheme = async(req, res) => {
     try {
         const themeId = req.params.id
-        const comments = await CommentModel.find({ themeId }).sort({ creationDate: -1 })
+        const comments = await CommentModel.find({ themeId }).sort({ date: -1 })
         res.json({ comments })    
     } catch (error) {
         res.status(500).json({ error: error.message })
@@ -41,7 +41,7 @@ export const getAllCommentsByTheme = async(req, res) => {
 export const getAllCommentsByUser = async(req, res) => {
     try {
         const { userId } = req.auth
-        const comments = await CommentModel.find({ author: userId }).sort({ creationDate: -1 })
+        const comments = await CommentModel.find({ author: userId }).sort({ date: -1 })
         res.json({ comments })
     } catch (error) {
         res.status(500).json({ error: error.message })
@@ -59,8 +59,9 @@ export const updateComment = async(req, res) => {
                 return
         }
         commentBody.content = commentBody.content.trim()
+        commentBody.date = Date.now()
         const comment = await CommentModel.findOne({ _id: commentId })
-        if (Object.keys(commentBody).length === 1 && comment.author.equals(userId)) {
+        if (Object.keys(commentBody).length === 2 && comment.author.equals(userId)) {
             await CommentModel.updateOne({ _id: commentId }, commentBody)
             res.json({ message: 'commentaire modifié'})
         } else {

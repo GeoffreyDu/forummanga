@@ -16,7 +16,7 @@ export const Comment = ({ indexColor, user, theme, comment, fetchData, notifElem
     const [isOpenDelete, setIsOpenDelete] = useState(false)
 
     const token = localStorage.getItem('token')
-    const date = new Date(comment.creationDate)
+    const date = new Date(comment.date)
     const dateFormatted = 'le ' + date.toLocaleDateString('fr-FR') + ' à ' + date.toLocaleTimeString('fr-FR')
 
     const togglePopupUpdate = () => {
