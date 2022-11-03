@@ -32,7 +32,7 @@ export const Home = ({ user, notifElements }) => {
 
     // set random welcome image
     const imgTab = [img1, img2, img3]
-    const [img, setImg] = useState(imgTab[Math.floor(Math.random() * 3)])
+    const [img] = useState(imgTab[Math.floor(Math.random() * 3)])
     
     const getThemesList = useCallback(async() => {
         try {
