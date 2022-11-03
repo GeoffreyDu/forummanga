@@ -1,0 +1,58 @@
+[{
+  "_id": {
+    "$oid": "6363d31dc6b07889ef8379de"
+  },
+  "title": "Les chauves dans les mangas",
+  "description": "J'aimerais savoir si vous connaissez d'autres personnages principaux chauves à part Saitama dans One Punch Man",
+  "author": {
+    "$oid": "6363d293c6b07889ef8379d6"
+  },
+  "comments": [
+    {
+      "$oid": "6363d49bc6b07889ef8379f6"
+    },
+    {
+      "$oid": "6363d84f4f05da4d4943f83e"
+    },
+    {
+      "$oid": "6363d8dc4f05da4d4943f872"
+    }
+  ],
+  "__v": 9
+},{
+  "_id": {
+    "$oid": "6363d37ec6b07889ef8379e5"
+  },
+  "title": "Goku vs Saitama",
+  "description": "Ayant été bercé par DBZ j'aurais pu dire Goku mais le fait est que Saitama est indiscutablement le plus fort (j'ai dit indiscutable mais parlons en)",
+  "author": {
+    "$oid": "6363d293c6b07889ef8379d6"
+  },
+  "comments": [
+    {
+      "$oid": "6363d7ee4f05da4d4943f827"
+    },
+    {
+      "$oid": "6363d8654f05da4d4943f84c"
+    }
+  ],
+  "__v": 2
+},{
+  "_id": {
+    "$oid": "6363d8834f05da4d4943f855"
+  },
+  "title": "Demon Slayer surcôté ?",
+  "description": "Moi je dis un grand oui, pas vous ?",
+  "author": {
+    "$oid": "6363d8264f05da4d4943f830"
+  },
+  "comments": [
+    {
+      "$oid": "6363d8ad4f05da4d4943f85f"
+    },
+    {
+      "$oid": "6363d9304f05da4d4943f88f"
+    }
+  ],
+  "__v": 2
+}]
