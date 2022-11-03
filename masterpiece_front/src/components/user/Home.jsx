@@ -11,6 +11,9 @@ import Box from '@mui/material/Box'
 import Alert from '@mui/material/Alert'
 import { back_hostname } from '../../config/index.js'
 import '../../styles/Home.css'
+import img1 from '../../images/1.jpg'
+import img2 from '../../images/2.jpg'
+import img3 from '../../images/3.jpg'
 
 // Component user account home page
 export const Home = ({ user, notifElements }) => {
@@ -26,6 +29,10 @@ export const Home = ({ user, notifElements }) => {
     
     const token = localStorage.getItem('token')
     const navigate = useNavigate()
+
+    // set random welcome image
+    const imgTab = [img1, img2, img3]
+    const [img, setImg] = useState(imgTab[Math.floor(Math.random() * 3)])
     
     const getThemesList = useCallback(async() => {
         try {
@@ -90,6 +97,7 @@ export const Home = ({ user, notifElements }) => {
     return (
         <div id='homeContainer'>
             <h1 id='homeTitle'>Bienvenue {user.username}</h1>
+            <img id='welcomeBanner' src={img} alt="welcome_banner" />
             { isOpen && <Popup
                 content={<>
                     <Alert severity="info">Le titre doit faire entre 3 et 100 caractères et la description minimum 3</Alert>
