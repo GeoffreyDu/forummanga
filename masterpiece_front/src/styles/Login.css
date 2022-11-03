@@ -1,9 +1,17 @@
+#loginContainer {
+    height: 90.3vh;
+    background-image: url('../images/loginBackground.jpg');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
 #loginForm {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 2px solid #BC002D;
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 20%;
     padding: 30px;
 }
@@ -18,13 +26,17 @@
 }
 
 @media only screen and (max-width: 800px) {
+    #loginContainer {
+        height: 85.5vh;
+    }
+
     #loginForm {
         border: none;
-        padding: 0;
+        padding: 15px;
     }
 }
 
-@media only screen and (orientation: landscape) {
+@media only screen and (max-width: 800px) and ( orientation: landscape) {
     #loginForm {
         margin-top: 10px;
         border: none;

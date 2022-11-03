@@ -3,6 +3,7 @@ import { Button } from '@mui/material'
 import LogoutIcon from '@mui/icons-material/Logout';
 import '../../styles/LoggedNavbar.css'
 
+// the navbar when logged
 export const LoggedNavbar = ({ setUser, notifElements }) => {
     const navigate = useNavigate()
     

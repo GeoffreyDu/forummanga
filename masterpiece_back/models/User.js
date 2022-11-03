@@ -17,7 +17,7 @@ const UserSchema = new Schema({
         required: [true, "Mail obligatoire"]
      },
     password: { type: String, required: true, minlength: [12, 'Mot de passe trop court'] },
-    emailToken: {type: String, default: null },
+    emailToken: { type: String, default: null },
     isVerified: { type: Boolean, default: false },
     changePasswordToken: { type: String, default: null },
     accountCreationDate: { type: Date, default: Date.now() },

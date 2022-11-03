@@ -5,11 +5,10 @@ export const addTheme = async (req, res) => {
     const themeBody = req.body
     themeBody.title = themeBody.title.trim()
     themeBody.description = themeBody.description.trim()
-    console.log(themeBody.title);
-    console.log(themeBody.description);
     const { userId } = req.auth
     try {
         const user = await UserModel.findById(userId)
+        // check if user exists
         if(user){
             themeBody.author = user._id
             const theme = await ThemeModel.create(themeBody)
@@ -49,11 +48,11 @@ export const updateTheme = async(req, res) => {
         const { userId } = req.auth
         const themeId = req.params.id
         const themeBody = req.body
+        // check theme validations
         if (themeBody.title.length < 3 
             || themeBody.title.length > 100 
-            || themeBody.description.length < 3 
-            || themeBody.description.length > 200) {
-                res.status(400).json({ error: 'Le titre doit faire entre 3 et 100 caractères et la description entre 3 et 200' })
+            || themeBody.description.length < 3) {
+                res.status(400).json({ error: 'Le titre doit faire entre 3 et 100 caractères et la description minimum 3' })
                 return
         }
         themeBody.title = themeBody.title.trim()
@@ -88,7 +87,6 @@ export const getOneTheme = async(req, res) => {
         const theme = await ThemeModel
             .findOne({ _id: themeId })
             .populate({ path: 'comments', populate: { path: 'author', select: 'username'} })
-            //console.log(theme.author[0].username);
 
         res.json({ theme })
     } catch (error) {

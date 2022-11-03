@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button"
 import '../../styles/ResetPassword.css'
 
+// Component to chnage the password of user account
 export const ResetPassword = ({ notifElements }) => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
@@ -20,7 +21,8 @@ export const ResetPassword = ({ notifElements }) => {
     const handleChangeConfirmPassword = e => {
         setConfirmPassword(e.target.value)
     }
-    
+
+    // first step is to check validity of input
     const handleSubmit = async e => {
         e.preventDefault()
         if (password !== confirmPassword) {
@@ -35,6 +37,7 @@ export const ResetPassword = ({ notifElements }) => {
             notifElements.setOpen(true)
             return
         }
+        // Then make the api call
         try {   
             const response =  await axios.post(`${back_hostname}/user/password-change`, { password, confirmPassword, token })
             notifElements.setMessage(response.data.message)

@@ -29,6 +29,7 @@ function App() {
       const foundUser = jwt_decode(token)
       setUser(foundUser)
     }
+    // logout after one hour
     setInterval(() => {
       let expired = tokenExpired(token)
       if (expired) {
@@ -45,6 +46,7 @@ function App() {
     setOpen(false);
   }
 
+  // Set elements to update the notification component
   const notifElements = {
     message,
     setOpen,

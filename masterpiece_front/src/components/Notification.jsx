@@ -1,21 +1,11 @@
-import { useState, useEffect } from "react"
 import { Snackbar } from "@mui/material"
 import Alert from '@mui/material/Alert'
 
+// Component to display error and success messages to the user
 export const Notification = ({ open, message, severity, handleClose }) => {
-    const [vertical, setVertical] = useState('bottom')
     const horizontal = 'center'
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth <= 800) {
-                setVertical('top')
-            } else{
-                setVertical('bottom')
-            }
-        }
-        window.addEventListener('resize', handleResize)
-    })
-
+    const vertical = 'bottom'
+    
     return (    
         <Snackbar
         autoHideDuration={6000}

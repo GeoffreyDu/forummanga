@@ -6,6 +6,7 @@ import '../../styles/Signin.css'
 import Grid from "@mui/material/Grid"
 import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button"
+import Alert from '@mui/material/Alert'
 
 export const Signin = ({ notifElements }) => {
     const [username, setUsername] = useState('')
@@ -29,8 +30,15 @@ export const Signin = ({ notifElements }) => {
     }
     const handleSubmit = async e => {
         e.preventDefault()
+        // first step is to check validity of input
         if (password !== confirmPassword) {
             notifElements.setMessage("les mots de passe ne sont pas identiques")
+            notifElements.setSeverity("error")
+            notifElements.setOpen(true)
+            return
+        }
+        if (username.length < 3 || username.length > 100) {
+            notifElements.setMessage("Le pseudo doit faire entre 3 et 100 caractères")
             notifElements.setSeverity("error")
             notifElements.setOpen(true)
             return
@@ -41,6 +49,7 @@ export const Signin = ({ notifElements }) => {
             notifElements.setOpen(true)
             return
         }
+        // Then make the api call
         try {   
             const user = {
                 username,
@@ -48,14 +57,14 @@ export const Signin = ({ notifElements }) => {
                 password,
                 confirmPassword
             }
-            const response =  await axios.post(`${back_hostname}/users`, user )
-            console.log(response);
+            const response = await axios.post(`${back_hostname}/users`, user )
             notifElements.setMessage(response.data.message)
             notifElements.setSeverity("success")
             notifElements.setOpen(true)
             navigate('/login')
         } catch (error) {
-            notifElements.setMessage(error.message)
+            console.log(error);
+            notifElements.setMessage(error.response.data.error)
             notifElements.setSeverity("error")
             notifElements.setOpen(true)
         }
@@ -70,12 +79,13 @@ export const Signin = ({ notifElements }) => {
                 <h3>Sinon <span id="linkLogin" onClick={() => navigate('/login')}>connectez-vous</span></h3>
             </div>
             <form id="signinForm" onSubmit={handleSubmit}>
+                <Alert severity="info">Le mot de passe doit contenir minimum 12 caractères, dont au moins une majuscule, une minuscule, un chiffre et un caractère spécial</Alert>
                 <h2 id='titleInscription'>Inscription</h2>
                 <Grid container alignItems="center" justify="center" direction="column">
-                    <TextField style={{ marginBottom: '5px' }} type="text" label="Pseudo" name="username" id="username" onChange={handleChangeUsername} value={ username }/>
-                    <TextField style={{ marginBottom: '5px' }} type="text" label="Adresse mail" name="mail" id="mail" onChange={handleChangeMail} value={ mail }/>
-                    <TextField style={{ marginBottom: '5px' }} type="password" label="Mot de passe" name="password" id="password" onChange={handleChangePassword} value={ password }/>
-                    <TextField style={{ marginBottom: '5px' }} type="password" label="Confirmation du mot de passe" name="confirmPassword" id="confirmPassword" onChange={handleChangeConfirmPassword} value={ confirmPassword }/>
+                    <TextField style={{ marginBottom: '5px' }} type="text" label="Pseudo" name="username" id="signinUsername" onChange={handleChangeUsername} value={ username }/>
+                    <TextField style={{ marginBottom: '5px' }} type="text" label="Adresse mail" name="mail" id="signinMail" onChange={handleChangeMail} value={ mail }/>
+                    <TextField style={{ marginBottom: '5px' }} type="password" label="Mot de passe" name="password" id="signinPassword" onChange={handleChangePassword} value={ password }/>
+                    <TextField style={{ marginBottom: '5px' }} type="password" label="Confirmation du mot de passe" name="confirmPassword" id="signinConfirmPassword" onChange={handleChangeConfirmPassword} value={ confirmPassword }/>
                     <Button style={{ color: '#BC002D' }} type="submit">Envoyer</Button>
                 </Grid>
             </form>

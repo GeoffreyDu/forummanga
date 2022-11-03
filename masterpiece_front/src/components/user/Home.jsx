@@ -8,11 +8,11 @@ import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button"
 import List from '@mui/material/List'
 import Box from '@mui/material/Box'
+import Alert from '@mui/material/Alert'
 import { back_hostname } from '../../config/index.js'
 import '../../styles/Home.css'
 
-
-
+// Component user account home page
 export const Home = ({ user, notifElements }) => {
     // popup handler
     const [isOpen, setIsOpen] = useState(false)
@@ -69,17 +69,20 @@ export const Home = ({ user, notifElements }) => {
             getThemesList()
             setTitleCreate('')
             setDescriptionCreate('')
+            // handle response
             notifElements.setMessage(response.data.message)
             notifElements.setSeverity("success")
             notifElements.setOpen(true)
             togglePopup()
         } catch (error) {
+            // handle error
             error.response.status === 500 ? notifElements.setMessage(error.response.data.error) : notifElements.setMessage(error.message)
             notifElements.setSeverity("error")
             notifElements.setOpen(true)
         }
     }
 
+    // to go to the theme page
     const handleClick = (id) => {
         navigate(`/theme/${id}`)
     }
@@ -89,6 +92,7 @@ export const Home = ({ user, notifElements }) => {
             <h1 id='homeTitle'>Bienvenue {user.username}</h1>
             { isOpen && <Popup
                 content={<>
+                    <Alert severity="info">Le titre doit faire entre 3 et 100 caractères et la description minimum 3</Alert>
                     <h2 id='themePopupCreateTitle'>Création de thème</h2>
                     <form onSubmit={themeCreation}>
                         <Grid container alignItems="center" justify="center" direction="column">

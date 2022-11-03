@@ -3,6 +3,7 @@ import IconButton from '@mui/material/IconButton'
 import HomeIcon from '@mui/icons-material/Home'
 import '../../styles/Navbar.css'
 
+// the navbar who not logged
 export const Navbar = () => {
 
     return (

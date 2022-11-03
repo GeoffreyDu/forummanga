@@ -5,8 +5,10 @@ import { Comment } from '../comments/Comment.jsx'
 import Button from "@mui/material/Button"
 import Grid from "@mui/material/Grid"
 import TextField from "@mui/material/TextField"
+import Alert from '@mui/material/Alert'
 import '../../styles/ThemePage.css'
 
+// Component representing the page of a theme 
 export const ThemePage = ({ user, notifElements }) => {
 
     const [theme, setTheme] = useState({})
@@ -15,6 +17,8 @@ export const ThemePage = ({ user, notifElements }) => {
     const id = pathnameSplitted[pathnameSplitted.length - 1]
 
     const token = localStorage.getItem('token')
+
+    // to use use multiple times this function
     const fetchData = useCallback(async() => {
         try {
             const response = await axios.get(`${back_hostname}/theme/${id}`, { headers: { Authorization: `Bearer ${token}` } })
@@ -40,7 +44,8 @@ export const ThemePage = ({ user, notifElements }) => {
 
     const commentCreate = async e => {
         e.preventDefault()
-        try {   
+        try {
+            // trim is use to prevent from leaving first and final white-space   
             const comment = {
                 content: contentCreate.trim(),
             }
@@ -67,6 +72,7 @@ export const ThemePage = ({ user, notifElements }) => {
                 <h2 id='themePageTitle'>{ theme.title }</h2>
                 <p id='themePageDescription'>{ theme.description }</p>
                 <h4>Ajouter un commentaire</h4>
+                <Alert severity="info">Le commentaire doit faire minimum 3 caractères</Alert>
                 { theme.comments && <form id='createCommentForm' onSubmit={e => commentCreate(e)}>
                         <TextField 
                             multiline

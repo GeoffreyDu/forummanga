@@ -1,6 +1,8 @@
 .commentContent {
     white-space: pre-line;
-    padding: 15px;
+    inline-size: 700px;
+    padding: 0 15px 15px 15px;
+    margin-top: 0;
 }
 
 .commentInfo {

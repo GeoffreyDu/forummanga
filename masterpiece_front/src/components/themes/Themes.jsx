@@ -7,6 +7,7 @@ import Grid from "@mui/material/Grid"
 import Box from '@mui/material/Box'
 import '../../styles/Themes.css'
 
+// List of themes
 export const Themes = ({ notifElements }) => {
     const [themes, setThemes] = useState([])
     const navigate = useNavigate()
@@ -31,6 +32,7 @@ export const Themes = ({ notifElements }) => {
         // eslint-disable-next-line
     }, [])
 
+    // Navigate to the theme page
     const handleClick = (id) => {
         navigate(`/theme/${id}`)
     }
@@ -39,7 +41,7 @@ export const Themes = ({ notifElements }) => {
         <Grid container alignItems="center" justify="center" direction="column">
             <Box justify='center' sx={{ width: '100%', maxWidth: 800 }}>
                 <h2 id='themesTitle'>Themes</h2>
-                <h3 id='themesSubTitle'>Voici les différents thèmes, si tu veux parler d'autre chose, n'hésite pas à créer le tien en cliquant <span id='spanGoHome' onClick={() => navigate('/home')}>ici</span></h3>
+                <h3 id='themesSubTitle'>Voici les différents thèmes, si tu veux parler d'autre chose, n'hésite pas à créer un thème en cliquant <span id='spanGoHome' onClick={() => navigate('/home')}>ici</span></h3>
                 {themes.length > 0 
                     ? themes.map((theme, key) => <Theme key={key} theme={theme} goToComponent={() => handleClick(theme._id)}/>) 
                     : <p>Aucun thèmes présents</p>

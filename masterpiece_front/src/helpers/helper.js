@@ -1,5 +1,6 @@
 import jwt_decode from 'jwt-decode'
 
+// the function to logout when jwt expired
 export const tokenExpired = (token) => {
     if(token){
         const tokenDecoded = jwt_decode(token)

@@ -6,11 +6,13 @@ import ListItem from '@mui/material/ListItem'
 import Button from "@mui/material/Button"
 import Grid from "@mui/material/Grid"
 import TextField from "@mui/material/TextField"
+import Alert from '@mui/material/Alert'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import DescriptionIcon from '@mui/icons-material/Description'
 import '../../styles/Theme.css'
 
+// Component representing the structure of one theme
 export const Theme = ({ theme, goToComponent, getThemesList, notifElements }) => {
     const [titleUpdate, setTitleUpdate] = useState(theme.title)
     const [descriptionUpdate, setDescriptionUpdate] = useState(theme.description)
@@ -20,6 +22,7 @@ export const Theme = ({ theme, goToComponent, getThemesList, notifElements }) =>
     const [isOpenDelete, setIsOpenDelete] = useState(false)
     
     const token = localStorage.getItem('token')
+    // to display buttons only if user is on account home page
     const endpoint = window.location.pathname
 
     const togglePopupUpdate = () => {
@@ -85,6 +88,7 @@ export const Theme = ({ theme, goToComponent, getThemesList, notifElements }) =>
                     <Button className='userThemeOpButton' onClick={togglePopupUpdate}>Modifier</Button>
                     { isOpenUpdate && <Popup
                         content={<>
+                            <Alert severity="info">Rappel: le titre doit faire entre 3 et 100 caractères et la description entre 3 et 200</Alert>
                             <h2 id='themePopupUpdateTitle'>Modifier thème</h2>
                             <form onSubmit={ e => themeUpdate(e, theme._id) }>
                                 <Grid container alignItems="center" justify="center" direction="column">

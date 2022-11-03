@@ -6,6 +6,7 @@ import Button from "@mui/material/Button"
 import { back_hostname } from '../../config/index.js'
 import '../../styles/PasswordForgotten.css'
 
+// Component to send demand to change password
 export const PasswordForgotten = ({ notifElements }) => {
     const [mail, setMail] = useState('')
 

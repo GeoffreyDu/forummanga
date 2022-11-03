@@ -8,6 +8,7 @@ import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button"
 import '../../styles/Login.css'
 
+// Component to access to user's account
 export const Login = ({ setUser, notifElements }) => {
     const [mail, setMail] = useState('')
     const [password, setPassword] = useState('')
@@ -29,6 +30,7 @@ export const Login = ({ setUser, notifElements }) => {
                 password
             }
             const response =  await axios.post(`${back_hostname}/login`, user )
+            // handle reponse to display it to the user
             notifElements.setMessage('Connexion réussie')
             notifElements.setSeverity("success")
             notifElements.setOpen(true)
@@ -38,8 +40,9 @@ export const Login = ({ setUser, notifElements }) => {
             setUser(foundUser)
             navigate('/themes')
         } catch (error) {
-            console.log(error); // Say the problem to the user
-            notifElements.setMessage(error.message)
+            // handle error
+            console.log(error)
+            notifElements.setMessage(error.response.data.error)
             notifElements.setSeverity("error")
             notifElements.setOpen(true)
         }
@@ -50,8 +53,8 @@ export const Login = ({ setUser, notifElements }) => {
             <form id="loginForm" onSubmit={handleSubmit}>
                 <Grid container alignItems="center" justify="center" direction="column">
                     <h2 id='titleConnexion'>Connexion</h2>
-                    <TextField style={{ marginBottom: '5px' }} label='Adresse mail' type="text" name="mail" id="mail" onChange={handleChangeMail} value={ mail }/>
-                    <TextField style={{ marginBottom: '5px' }} label='Mot de passe' type="password" name="password" id="password" onChange={handleChangePassword} value={ password }/>
+                    <TextField style={{ marginBottom: '5px' }} label='Adresse mail' type="text" name="mail" id="loginMail" onChange={handleChangeMail} value={ mail }/>
+                    <TextField style={{ marginBottom: '5px' }} label='Mot de passe' type="password" name="password" id="loginPassword" onChange={handleChangePassword} value={ password }/>
                     <Button type="submit" style={{ color: '#BC002D' }}>Envoyer</Button>
                     <a id='passwordForgotten' href="/passwordForgotten">Mot de passe oublié?</a>
                 </Grid>

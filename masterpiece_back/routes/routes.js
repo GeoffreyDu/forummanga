@@ -3,6 +3,7 @@ import { addTheme, deleteTheme, updateTheme, getAllThemes, getOneTheme, getUserT
 import { addComment, deleteComment, getAllCommentsByTheme, getAllCommentsByUser, updateComment } from '../controllers/CommentController.js'
 import { 
     checkLogged,
+    checkUser,
     checkPassword, 
     createUser, 
     verifyUser, 
@@ -14,7 +15,7 @@ import {
 const router = express.Router()
 
 // user routes
-router.post('/users', checkPassword, createUser)
+router.post('/users', checkUser, createUser)
 router.get('/user/verify-email', verifyUser)
 router.post('/user/password-forgotten', changePasswordRequest)
 router.post('/user/password-change', checkPassword, resetPassword)

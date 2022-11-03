@@ -31,12 +31,33 @@ export const createUser = async (req, res) => {
         }    
     }
     else {
-        res.status(401).json({ error: "Le mot de passe et la confirmation ne correspondent pas" })
+        res.status(400).json({ error: "Le mot de passe et la confirmation ne correspondent pas" })
+    }
+}
+
+// Middleware to check mail, password and username validation
+export const checkUser = async(req, res, next) => {
+    const { mail, username, password } = req.body
+    try {
+        const user = await UserModel.findOne({ mail })
+        if(user){
+            res.status(400).json({ error: 'Ce mail existe déjà' })
+        }
+        else if (username.length < 3 || username.length > 100) {
+            res.status(400).json({ error: 'Le pseudo doit faire entre 3 et 100 caractères' })
+        }
+        else if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{12,}$/.test(password)) {
+            next()
+        } else {
+            res.status(400).json({ error: "Le mot de passe doit contenir minimum 12 caractères, dont au moins une majuscule, une minuscule, un chiffre et un caractère spécial" })
+        }
+    } catch (error) {
+        res.status(500).json({ error })
     }
 }
 
 // Middleware to check password validation
-export const checkPassword = (req, res, next) => {
+export const checkPassword = async(req, res, next) => {
     const { password } = req.body
     try {
         if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{12,}$/.test(password)) {
@@ -74,11 +95,11 @@ export const login = async (req, res) => {
         const reqUser = req.body
         const bddUser = await UserModel.findOne({ mail: reqUser.mail })
         if (!bddUser) {
-            return res.status(401).json({error: `Le mail ${reqUser.mail} n'existe pas dans notre base de données`})
+            return res.status(400).json({error: `Le mail ${reqUser.mail} n'existe pas dans notre base de données`})
         }
 
         if (!bddUser.isVerified) {
-            return res.status(500).json({error: "Le compte n'est pas vérifié"})
+            return res.status(400).json({error: "Le compte n'est pas vérifié"})
         }
 
         const userExists = await comparePassword(reqUser.password, bddUser.password)

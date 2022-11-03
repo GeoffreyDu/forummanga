@@ -9,6 +9,7 @@ export const addComment = async(req, res) => {
         const commentBody = req.body
         const user = await UserModel.findById(userId)
         const theme = await ThemeModel.findById(themeId)
+        // check user and theme exist before continue
         if (user && theme) {
             commentBody.content = commentBody.content.trim()
             commentBody.author = user._id
@@ -52,13 +53,14 @@ export const updateComment = async(req, res) => {
         const { userId } = req.auth
         const commentId = req.params.id
         const commentBody = req.body
-        if (commentBody.content.length < 3 || commentBody.content.length > 155) {
-            res.status(400).json({ error: 'Le contenu doit faire entre 3 et 155 caractères' })
+        // check content's length
+        if (commentBody.content.length < 3) {
+            res.status(400).json({ error: 'Le contenu doit faire minimum 3 caractères' })
                 return
         }
         commentBody.content = commentBody.content.trim()
         const comment = await CommentModel.findOne({ _id: commentId })
-        if (Object.keys(commentBody).length === 1 && comment.author.equals(userId) && commentBody.content.length > 0) {
+        if (Object.keys(commentBody).length === 1 && comment.author.equals(userId)) {
             await CommentModel.updateOne({ _id: commentId }, commentBody)
             res.json({ message: 'commentaire modifié'})
         } else {

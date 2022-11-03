@@ -7,6 +7,7 @@ import Grid from "@mui/material/Grid"
 import TextField from "@mui/material/TextField"
 import '../../styles/Comment.css'
 
+// Component who represents the structure of a comment
 export const Comment = ({ indexColor, user, theme, comment, fetchData, notifElements }) => {
     const [contentUpdate, setContentUpdate] = useState(comment.content)
 
@@ -41,8 +42,10 @@ export const Comment = ({ indexColor, user, theme, comment, fetchData, notifElem
             const response = await axios.put(`${back_hostname}/comments/${commentId}`, commentBody, { headers: { Authorization: `Bearer ${token}` } })
             notifElements.setMessage(response.data.message)
             notifElements.setSeverity("success")
-            notifElements.setOpen(true)  
+            notifElements.setOpen(true)
+            // to refresh data  
             fetchData()
+            // to close popup after submitting
             togglePopupUpdate()
         } catch (error) {
             console.log(error)
@@ -57,8 +60,10 @@ export const Comment = ({ indexColor, user, theme, comment, fetchData, notifElem
             const response = await axios.delete(`${back_hostname}/comments/${commentId}`, { headers: { Authorization: `Bearer ${token}` } })
             notifElements.setMessage(response.data.message)
             notifElements.setSeverity("success")
-            notifElements.setOpen(true)  
+            notifElements.setOpen(true)
+            // to refresh data   
             fetchData()
+            // to close popup after submitting
             togglePopupDelete()
         } catch (error) {
             console.log(error)

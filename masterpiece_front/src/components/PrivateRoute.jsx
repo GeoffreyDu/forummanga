@@ -1,6 +1,7 @@
 import { useLocation, Navigate } from 'react-router-dom'
 import { tokenExpired } from '../helpers/helper.js'
 
+// Component to restrict access to user not logged
 export const PrivateRoute = ({ children }) => {
     const location = useLocation()
 

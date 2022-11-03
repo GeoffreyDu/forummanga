@@ -1,0 +1,71 @@
+[{
+  "_id": {
+    "$oid": "63516111360892fc486bcb99"
+  },
+  "username": "geo",
+  "mail": "geoffrey.ducci@gmail.com",
+  "password": "$2b$10$pM/xIa8HZLuDw7WoB2q7quAYRxnXJBJXlDcC77MXmMB6qBOCnk1sC",
+  "emailToken": null,
+  "isVerified": true,
+  "changePasswordToken": null,
+  "accountCreationDate": {
+    "$date": {
+      "$numberLong": "1666277576859"
+    }
+  },
+  "themes": [
+    {
+      "$oid": "63516137360892fc486bcba0"
+    },
+    {
+      "$oid": "635180f34fc72ac339e86f06"
+    },
+    {
+      "$oid": "6359268946e95f92e5be9c28"
+    }
+  ],
+  "comments": [
+    {
+      "$oid": "6352531a23e061c97e089b70"
+    },
+    {
+      "$oid": "63596c27f1e0f46c5a7b0c2d"
+    }
+  ],
+  "__v": 75
+},{
+  "_id": {
+    "$oid": "635162b5b2d84f363cbf8e19"
+  },
+  "username": "jessy",
+  "mail": "joe@mail.fr",
+  "password": "$2b$10$VZ5PItl32TT2Kh5kYKtE2OTWTHNIn92C8oocDToTF9vXqBCMcD2C2",
+  "emailToken": null,
+  "isVerified": true,
+  "changePasswordToken": null,
+  "accountCreationDate": {
+    "$date": {
+      "$numberLong": "1666277949562"
+    }
+  },
+  "themes": [
+    {
+      "$oid": "635162efb2d84f363cbf8e20"
+    },
+    {
+      "$oid": "635180dc4fc72ac339e86eff"
+    }
+  ],
+  "comments": [
+    {
+      "$oid": "6351b79f4fc72ac339e86f3d"
+    },
+    {
+      "$oid": "63596a52f1e0f46c5a7b0c06"
+    },
+    {
+      "$oid": "63596afef1e0f46c5a7b0c12"
+    }
+  ],
+  "__v": 12
+}]
